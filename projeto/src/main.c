@@ -129,7 +129,7 @@ void buscarLivros(){
         busca[i] = tolower(busca[i]);
     }
         
-    printf("\nBUSCANDO POR: '%s'\n", busca);
+    printf("\nBuscando por: '%s'\n", busca);
     printf("........................................\n");
 
     for (int i = 0; i < numero_livros; i ++){
