@@ -142,7 +142,7 @@ void buscarLivros(){
 
         titulo_minusculo[j] = '\0';  // Adiciona caractere nulo ao final da string
 
-        for (int k = 0; autor_livro[i][k]; k++){                   // Converte o autor do livro para letras minúsculas
+        for (k = 0; autor_livro[i][k]; k++){   // Converte o autor do livro para letras minúsculas
             autor_minusculo[k] = tolower(autor_livro[i][k]);
         }
 
