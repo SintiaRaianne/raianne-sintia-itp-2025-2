@@ -130,7 +130,6 @@ void buscarLivros(){
     }
         
     printf("\nBuscando por: '%s'\n", busca);
-    printf("........................................\n");
 
     for (int i = 0; i < numero_livros; i ++){
 
@@ -159,9 +158,9 @@ void buscarLivros(){
             }
 
             printf("\nID: %i\n", i+1);
-            printf("   Titulo: %s\n", titulo_livro[i]);
-            printf("   Autor: %s\n", autor_livro[i]);
-            printf("   Status: %s\n", status_livro);
+            printf("Titulo: %s\n", titulo_livro[i]);
+            printf("Autor:  %s\n", autor_livro[i]);
+            printf("Status: %s\n", status_livro);
 
             encontrado++;  // Incrementa contador de livros encontrados
         }
@@ -226,7 +225,7 @@ void listarUsuarios(){
         }
     }
     else {
-        printf("\nNao existe usuarios cadastrados no sistema.\n");
+        printf("\nNao existem usuarios cadastrados no sistema.\n");
     }
 }
 
@@ -305,6 +304,23 @@ void realizarEmprestimo(){
     }
  }
 
+ void relatorioEmprestimoUsuario() {
+
+    int relatorio_emprestimos_usuario[maximo_usuarios][4] = {0}; 
+
+    if (numero_usuarios > 0){
+
+        printf("\n=============== RELATORIO DE EMPRESTIMOS POR USUARIOS ==================\n");
+
+
+    }
+
+    else {
+        printf("\nNao existem usuarios cadastrados no sistema.\n");
+    }
+ 
+}
+
 int main() {
     int opcao;
 
@@ -357,9 +373,9 @@ int main() {
             //     exibirHistorico();
             //     break;
             
-            // case 9:
-            //     relatorioEstatisticas();
-            //     break;
+            case 9:
+                relatorioEmprestimoUsuario();
+                break;
 
             case 0:
                 printf("\nSaindo do sistema...\n\n");
