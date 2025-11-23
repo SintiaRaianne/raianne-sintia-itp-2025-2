@@ -230,11 +230,11 @@ void listarUsuarios(){
 }
 
 void realizarEmprestimo(){
-    int id_livro, id_usuario;
+    int id_livro_emprestimo, id_usuario_emprestimo;
 
     printf("\n================= EMPRESTIMO DE LIVRO ====================\n");
 
-    // Verifica se nao existe livros e/ou usuarios cadastrados
+    // Verifica se existe livros e/ou usuarios cadastrados ou nao
     if (numero_livros == 0 && numero_usuarios == 0) {
         printf("\nNenhum livro e usuario cadastrados!\n");
         printf("Voce precisa cadastrar livros e usuarios primeiro, para realizar emprestimos.\n");
@@ -250,79 +250,151 @@ void realizarEmprestimo(){
     }
 
     printf("\nID do livro do emprestimo: ");
-    scanf("%i", &id_livro);
-
-    printf("ID do usuario do emprestimo: ");
-    scanf("%i", &id_usuario);
+    scanf("%i", &id_livro_emprestimo);
 
     getchar(); // Limpa buffer do teclado
 
     // Verifica se os IDs informados sao validos
-    if (id_livro < 1 || id_livro > numero_livros){
+    if (id_livro_emprestimo < 1 || id_livro_emprestimo > numero_livros){
         printf("\nID de livro invalido!\n");
         printf("ID dos livros existentes: 1 ate %i\n", numero_livros);
         return;
     }
 
-    if (id_usuario < 1 || id_usuario > numero_usuarios){
+    printf("ID do usuario do emprestimo: ");
+    scanf("%i", &id_usuario_emprestimo);
+
+    getchar(); // Limpa buffer do teclado
+
+    if (id_usuario_emprestimo < 1 || id_usuario_emprestimo > numero_usuarios){
         printf("\nID de usuario invalido!\n");
         printf("ID dos usuarios existentes: 1 ate %i\n", numero_usuarios);
         return;
     }
 
     // Ajusta os indices. O usuario digita 1, mas, no vetor seria 0
-    id_livro--;
-    id_usuario--;
+    id_livro_emprestimo--;
+    id_usuario_emprestimo--;
 
     // Verifica se usuario atingiu limite de emprestimos
-    if (numero_emprestimo_usuario[id_usuario] >= maximo_emprestimos){
-        printf("\nUsuario ja tem %i livros emprestados. O limite eh de %i por usuario", numero_emprestimo_usuario[id_usuario], maximo_emprestimos);
+    if (numero_emprestimo_usuario[id_usuario_emprestimo] >= maximo_emprestimos){
+        printf("\nUsuario ja tem %i livros emprestados. O limite eh de %i por usuario", numero_emprestimo_usuario[id_usuario_emprestimo], maximo_emprestimos);
         return;
     }
 
     // Verifica se o livro esta disponivel
-    if (disponivel_livro[id_livro] == 0){
+    if (disponivel_livro[id_livro_emprestimo] == 0){
         printf("\nLivro ja esta emprestado! Escolha outro livro.");
         return;
     }
 
     // Procura posicao livre no vetor de emprestimos do usuario para alocar o livro
     for (int i = 0; i < maximo_emprestimos; i++){
-        if (emprestimos_usuario[id_usuario][i] == -1){
-            emprestimos_usuario[id_usuario][i] = id_livro;  // Coloca o ID do livro na posicao livre
-            numero_emprestimo_usuario[id_usuario]++; // Incrementa o contador de emprestimos do usuario
+        if (emprestimos_usuario[id_usuario_emprestimo][i] == -1){
+            emprestimos_usuario[id_usuario_emprestimo][i] = id_livro_emprestimo;  // Coloca o ID do livro na posicao livre
+            numero_emprestimo_usuario[id_usuario_emprestimo]++; // Incrementa o contador de emprestimos do usuario
 
-            disponivel_livro[id_livro] = 0; // Coloca livro como emprestado
+            disponivel_livro[id_livro_emprestimo] = 0; // Coloca livro como emprestado
 
             printf("\nEmprestimo cadastrado com sucesso!\n");
 
             printf("\nInformacoes do emprestimo realizado:\n");
-            printf("Livro: %s\n", titulo_livro[id_livro]);
-            printf("Usuario: %s\n", nome_usuario[id_usuario]);
+            printf("Livro: %s\n", titulo_livro[id_livro_emprestimo]);
+            printf("Usuario: %s\n", nome_usuario[id_usuario_emprestimo]);
             break;
         }
     }
  }
 
- void relatorioEmprestimoUsuario() {
+ void realizarDevolucao(int* id_livro_dev, int* id_usuario_dev){
+    int id_livro_devolucao, id_usuario_devolucao;
 
-    int relatorio_emprestimos_usuario[maximo_usuarios][4] = {0}; 
+    printf("\n================= DEVOLUCAO DE LIVRO ====================\n");
 
-    if (numero_usuarios > 0){
-
-        printf("\n=============== RELATORIO DE EMPRESTIMOS POR USUARIOS ==================\n");
-
-
+    // Verifica se existe livros e/ou usuarios cadastrados ou nao
+    if (numero_livros == 0 && numero_usuarios == 0) {
+        printf("\nNenhum livro e usuario cadastrados!\n");
+        printf("Voce precisa cadastrar livros e usuarios primeiro, para realizar emprestimos.\n");
+        return;
+    }
+    if (numero_livros == 0) {
+        printf("\nNenhum livro cadastrado!\n");
+        return;
+    }
+    if (numero_usuarios == 0) {
+        printf("\nNenhum usuario cadastrado!\n");
+        return;
     }
 
+    printf("\nID do livro do emprestimo: ");
+    scanf("%i", &id_livro_devolucao);
+
+    getchar(); // Limpa buffer do teclado
+
+    // Verifica se os IDs informados sao validos
+    if (id_livro_devolucao < 1 || id_livro_devolucao > numero_livros){
+        printf("\nID de livro invalido!\n");
+        printf("ID dos livros existentes: 1 ate %i\n", numero_livros);
+        return;
+    }
+
+    printf("ID do usuario do emprestimo: ");
+    scanf("%i", &id_usuario_devolucao);
+
+    getchar(); // Limpa buffer do teclado
+
+    if (id_usuario_devolucao < 1 || id_usuario_devolucao > numero_usuarios){
+        printf("\nID de usuario invalido!\n");
+        printf("ID dos usuarios existentes: 1 ate %i\n", numero_usuarios);
+        return;
+    }
+
+    // Ajusta os indices. O usuario digita 1, mas, no vetor seria 0
+    *id_livro_dev = id_livro_devolucao - 1;
+    *id_usuario_dev = id_usuario_devolucao - 1;
+     
+    int posicao = -1;
+
+    // Verifica se o livro esta emprestado para o usuario
+    for (int i = 0; i < maximo_emprestimos; i++){
+        if (emprestimos_usuario[*id_usuario_dev][i] == *id_livro_dev){
+            posicao = i;
+            break;
+        }
+    }
+    if (posicao != -1){
+        emprestimos_usuario[*id_usuario_dev][posicao] = -1;  // Remove o ID do livro do vetor de emprestimos do usuario
+        numero_emprestimo_usuario[id_usuario_devolucao]--;   // Decrementa o contador de emprestimos do usuario
+
+        disponivel_livro[*id_livro_dev] = 1;           // Coloca livro como disponivel
+
+        printf("\nDevolucao cadastrada com sucesso!\n");
+
+        printf("\nInformacoes da devolucao realizada:\n");
+        printf("Livro: %s\n", titulo_livro[*id_livro_dev]);
+        printf("Usuario: %s\n", nome_usuario[*id_usuario_dev]);
+    }
     else {
-        printf("\nNao existem usuarios cadastrados no sistema.\n");
+        printf("\nO usuario nao possui esse livro emprestado!\n");
     }
- 
-}
+ }
+
+//  void relatorioEmprestimoUsuario() {
+
+//     int relatorio_emprestimos_usuario[maximo_usuarios][4] = {0}; 
+
+//     if (numero_usuarios > 0){
+
+//         printf("\n=============== RELATORIO DE EMPRESTIMOS POR USUARIOS ==================\n");
+//     }
+//     else {
+//         printf("\nNao existem usuarios cadastrados no sistema.\n");
+//     }
+// }
 
 int main() {
     int opcao;
+    int id_livro, id_usuario;
 
     do {
 
@@ -361,9 +433,9 @@ int main() {
                 realizarEmprestimo();
                 break;
 
-            // case 6:
-            //     realizarDevolucao();
-            //     break;
+            case 6:
+                realizarDevolucao(&id_livro, &id_usuario);
+                break;
                 
             case 7:
                 buscarLivros();
@@ -373,9 +445,9 @@ int main() {
             //     exibirHistorico();
             //     break;
             
-            case 9:
-                relatorioEmprestimoUsuario();
-                break;
+            // case 9:
+            //     relatorioEmprestimoUsuario();
+            //     break;
 
             case 0:
                 printf("\nSaindo do sistema...\n\n");
