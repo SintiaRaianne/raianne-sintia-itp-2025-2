@@ -380,8 +380,6 @@ void realizarEmprestimo(){
 
  void relatorioEmprestimoUsuario() {
 
-    int relatorio_emprestimos_usuario[maximo_usuarios][4] = {0}; 
-
     printf("\n=============== RELATORIO DE EMPRESTIMOS POR USUARIOS ==================\n");
     
     // Verifica se existe livros e/ou usuarios cadastrados ou nao
@@ -448,7 +446,7 @@ void realizarEmprestimo(){
     for (int i = 0; i < numero_usuarios; i++) {
         free(relatorio[i]);
     }
-    
+
     free(relatorio);
 }
 
