@@ -22,7 +22,7 @@
 char titulo_livro[maximo_livros][maximo_titulo];        // Armazena os titulos dos livros
 char autor_livro[maximo_livros][maximo_autor];          // Armazena os autores dos livros
 int disponivel_livro[maximo_livros];                    // Disponivel = 1 e Emprestado = 0
-char status_livro[maximo_status];                                  // Armazena o status do livro para exibicao
+char status_livro[maximo_status];                       // Armazena o status do livro para exibicao
 int numero_livros = 0;                                  // Contador de livros cadastrados
 
 // Vetores e variaveis globais para os usuários
@@ -54,8 +54,7 @@ void menuBiblioteca() {
     printf("5. Emprestimo de Livros\n");
     printf("6. Devolucao de Livros\n");
     printf("7. Buscar Livro\n");
-    printf("8. Historico de Operacoes\n");
-    printf("9. Relatorio de Estatisticas\n");
+    printf("8. Relatorio de Emprestimos\n");
     printf("0. Sair\n");
 }
 
@@ -379,18 +378,60 @@ void realizarEmprestimo(){
     }
  }
 
-//  void relatorioEmprestimoUsuario() {
+ void relatorioEmprestimoUsuario() {
 
-//     int relatorio_emprestimos_usuario[maximo_usuarios][4] = {0}; 
+    int relatorio_emprestimos_usuario[maximo_usuarios][4] = {0}; 
 
-//     if (numero_usuarios > 0){
+    printf("\n=============== RELATORIO DE EMPRESTIMOS POR USUARIOS ==================\n");
+    
+    // Verifica se existe livros e/ou usuarios cadastrados ou nao
+    if (numero_livros == 0 && numero_usuarios == 0) {
+        printf("\nNenhum livro e usuario cadastrados!\n");
+        printf("Voce precisa cadastrar livros e usuarios primeiro, para realizar emprestimos.\n");
+        return;
+    }
+    if (numero_livros == 0) {
+        printf("\nNenhum livro cadastrado!\n");
+        return;
+    }
+    if (numero_usuarios == 0) {
+        printf("\nNenhum usuario cadastrado!\n");
+        return;
+    }
+    
+    // Ponteiro para matriz dinamica
+    int** relatorio = (int**)malloc(numero_usuarios * sizeof(int*));
 
-//         printf("\n=============== RELATORIO DE EMPRESTIMOS POR USUARIOS ==================\n");
-//     }
-//     else {
-//         printf("\nNao existem usuarios cadastrados no sistema.\n");
-//     }
-// }
+    // Cria matriz que se adapta ao numero de usuarios
+    for (int i = 0; i < numero_usuarios; i++) {
+        relatorio[i] = (int*)malloc(2 * sizeof(int));
+    }
+
+    // Conta emprestimos ativos por usuario
+    for (int i = 0; i < numero_usuarios; i++){
+        int emprestimos_ativos = 0;
+
+        for (int j = 0; j < maximo_emprestimos; j++){
+            if (emprestimos_usuario[i][j] != -1){
+
+                emprestimos_ativos++;
+            }
+        }
+
+        relatorio[i][0] = emprestimos_ativos;    // Total de emprestimos ativos
+        relatorio[i][1] = (maximo_emprestimos - emprestimos_ativos);   // Saldo de emprestimos disponiveis  }
+    }
+
+    for (int i = 0; i < numero_usuarios; i++) {
+        printf("\nID: %i | Usuario: %s | Emprestimos Ativos: %i | Saldo Disponivel: %i\n", i + 1, nome_usuario[i], relatorio[i][0], relatorio[i][1]);  
+    }
+
+    // Libera a memoria alocada dinamicamente
+    for (int i = 0; i < numero_usuarios; i++) {
+        free(relatorio[i]);
+    }
+    free(relatorio);
+}
 
 int main() {
     int opcao;
@@ -441,13 +482,9 @@ int main() {
                 buscarLivros();
                 break;
             
-            // case 8:
-            //     exibirHistorico();
-            //     break;
-            
-            // case 9:
-            //     relatorioEmprestimoUsuario();
-            //     break;
+            case 8:
+                relatorioEmprestimoUsuario();
+                break;
 
             case 0:
                 printf("\nSaindo do sistema...\n\n");
