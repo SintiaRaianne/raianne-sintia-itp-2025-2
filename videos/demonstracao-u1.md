@@ -1,1 +1,1 @@
-# 🔗 Link do video da U1: 
+# 🔗 Link do video da U1: https://youtu.be/Szfb8V09yVU
