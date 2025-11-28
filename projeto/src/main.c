@@ -398,7 +398,7 @@ void realizarEmprestimo(){
         printf("\nNenhum usuario cadastrado!\n");
         return;
     }
-    
+
     // Ponteiro para matriz dinamica
     int** relatorio = (int**)malloc(numero_usuarios * sizeof(int*));
 
@@ -423,13 +423,32 @@ void realizarEmprestimo(){
     }
 
     for (int i = 0; i < numero_usuarios; i++) {
+        printf("\n------------------------------------------------------------------------\n");
+
         printf("\nID: %i | Usuario: %s | Emprestimos Ativos: %i | Saldo Disponivel: %i\n", i + 1, nome_usuario[i], relatorio[i][0], relatorio[i][1]);  
+
+        if (relatorio[i][0] > 0){
+            printf("\nLivros emprestados:\n\n");
+
+            for (int j = 0; j < maximo_emprestimos; j++){
+                if (emprestimos_usuario[i][j] != - 1){
+                    
+                    int livro_id = emprestimos_usuario[i][j];
+
+                     printf("ID: %i - Titulo: %s\n", livro_id + 1, titulo_livro[livro_id]);
+                }
+            }
+        }
+        else {
+            printf("\nLivros emprestados: 0\n");
+        }
     }
 
     // Libera a memoria alocada dinamicamente
     for (int i = 0; i < numero_usuarios; i++) {
         free(relatorio[i]);
     }
+    
     free(relatorio);
 }
 
