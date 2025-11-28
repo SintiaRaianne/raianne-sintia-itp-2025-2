@@ -379,7 +379,7 @@ void realizarEmprestimo(){
  }
 
  void relatorioEmprestimoUsuario() {
-
+    
     printf("\n=============== RELATORIO DE EMPRESTIMOS POR USUARIOS ==================\n");
     
     // Verifica se existe livros e/ou usuarios cadastrados ou nao
