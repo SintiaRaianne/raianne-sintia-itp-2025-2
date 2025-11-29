@@ -6,7 +6,7 @@ int main() {
     int id;
 
     scanf("%20s", campo);
-    scanf("%d", &id);
+    scanf("%i", &id);
 
     // Verifica se a posicao indicada possui uma bomba    
     if (campo[id] == 'x'){
@@ -30,7 +30,7 @@ int main() {
             bombas++;
         }
 
-        printf("%d\n", bombas); // Exibe a quantidade de bombas encontradas ao redor
+        printf("%i\n", bombas); // Exibe a quantidade de bombas encontradas ao redor
 
     return 0;
     }   
