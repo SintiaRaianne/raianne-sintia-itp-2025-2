@@ -39,7 +39,7 @@
 - Estruturas de repetição: Implementadas no menu principal, na listagem de livros e usuários, e na busca por posições livres no vetor de empréstimos
 - Vetores: Usados para armazenar informações referentes aos livros (título, autor e status), aos usuários (nome e matrícula) e aos empréstimos (associação entre usuário e livro).
 - Strings: Utilizadas para armazenar e manipular textos como títulos de livros, nomes de autores e usuários.
-- Matrizes:
+- Matrizes: Empregadas para organizar a relação entre usuários e livros emprestados, permitindo registrar múltiplos empréstimos por usuário em uma estrutura bidimensional.
 - Ponteiros: Usados para passar referências de variáveis entre funções, permitindo modificação direta dos valores nos vetores de livros, usuários e empréstimos.
 - Alocação dinâmica: Implementada ao criar a matriz de relatórios de empréstimos conforme o número de usuários cadastrados.
 - Estruturas de repetição aninhadas: Utilizadas para percorrer matrizes durante a contagem de empréstimos, busca por posições livres e geração do relatório de cada usuário.
