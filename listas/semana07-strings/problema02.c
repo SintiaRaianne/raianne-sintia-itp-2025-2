@@ -9,8 +9,7 @@ int main() {
     int tamanho = strlen(placa); // Recebe o tamanho da string da placa
     
     // Verificar se esta no padrão brasileiro (LLL-AAAA)
-    if (tamanho == 8 && 
-        isalpha(placa[0]) && isupper(placa[0]) &&
+    if (tamanho == 8 && isalpha(placa[0]) && isupper(placa[0]) &&
         isalpha(placa[1]) && isupper(placa[1]) &&
         isalpha(placa[2]) && isupper(placa[2]) &&
         placa[3] == '-' &&
@@ -22,8 +21,7 @@ int main() {
         printf("brasileiro\n");
     }
     // Verificar se esta no padrão mercosul (LLLALAA)
-    else if (tamanho == 7 &&
-        isalpha(placa[0]) && isupper(placa[0]) &&
+    else if (tamanho == 7 && isalpha(placa[0]) && isupper(placa[0]) &&
         isalpha(placa[1]) && isupper(placa[1]) &&
         isalpha(placa[2]) && isupper(placa[2]) &&
         isdigit(placa[3]) &&
