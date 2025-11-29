@@ -7,6 +7,7 @@
 **Projeto:**  Sistema de Gerenciamento de Biblioteca
 
 **Link do Vídeo:** https://youtu.be/Szfb8V09yVU
+
 **Duração:** 7 minutos e 11 segundos
 
 ## Conteúdos Demonstrados:
