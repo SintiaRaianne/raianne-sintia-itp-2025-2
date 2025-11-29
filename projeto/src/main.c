@@ -112,7 +112,7 @@ void buscarLivros(){
     char titulo_minusculo[maximo_titulo];
     char autor_minusculo[maximo_autor];
 
-    int encontrado = 0;
+    int encontrado = 0; // Contador de livros encontrados 
 
     // Verifica se algum livro foi cadastrado para buscar ou nao
     if (numero_livros > 0){
@@ -412,7 +412,7 @@ void realizarEmprestimo(){
         for (int j = 0; j < maximo_emprestimos; j++){
             if (emprestimos_usuario[i][j] != -1){
 
-                emprestimos_ativos++;
+                emprestimos_ativos++;  // Incrementa contador de emprestimos ativos
             }
         }
 
@@ -425,15 +425,17 @@ void realizarEmprestimo(){
 
         printf("\nID: %i | Usuario: %s | Emprestimos Ativos: %i | Saldo Disponivel: %i\n", i + 1, nome_usuario[i], relatorio[i][0], relatorio[i][1]);  
 
-        if (relatorio[i][0] > 0){
+        // Verifica se o usuario tem livros emprestados 
+        if (relatorio[i][0] > 0){ //
             printf("\nLivros emprestados:\n\n");
 
+            // Lista as informacoes dos livros emprestados por usuario
             for (int j = 0; j < maximo_emprestimos; j++){
                 if (emprestimos_usuario[i][j] != - 1){
                     
                     int livro_id = emprestimos_usuario[i][j];
 
-                     printf("ID: %i - Titulo: %s\n", livro_id + 1, titulo_livro[livro_id]);
+                    printf("ID: %i - Titulo: %s\n", livro_id + 1, titulo_livro[livro_id]);
                 }
             }
         }
