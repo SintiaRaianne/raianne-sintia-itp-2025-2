@@ -17,9 +17,7 @@
 
 **Descrição**: Sistema para gerenciar as operações de uma biblioteca, permitindo o cadastro de livros e usuários, listagem dos itens registrados, realização de empréstimos e devoluções, buscar livros no acervo e gerar relatórios de empréstimos por usuários.
 
-**Repositório**: 
-
-**Vídeo de Demonstração**: 
+**Repositório**: https://github.com/SintiaRaianne/raianne-sintia-itp-2025-2
 
 ### Funcionalidades Implementadas:
 - **Cadastro de Livros**: Permite ao usuário adicionar novos livros ao sistema, informando o título e o autor. O sistema define o status inicial do livro como "Disponível".
@@ -95,25 +93,25 @@
 - ✅ Problema 4: Em busca do tesouro perdido
 
 ### Semana 7 - Strings:
-- ✅ Problema 1: 
-- ✅ Problema 2: 
-- ✅ Problema 3: 
+- ✅ Problema 1: Campo minado 1D
+- ✅ Problema 2: Detecção de placas
+- ✅ Problema 3: OpenMeet
 
 ### Semana 8 - Repetições Aninhadas:
-- ✅ Problema 1: 
-- ✅ Problema 2: 
-- ✅ Problema 3: 
+- ✅ Problema 1: Estou com sorte (ou não)
+- ✅ Problema 2: Os dias mais chuvosos
+- ✅ Problema 3: Esse sim é piloto
 
 ### Semana 9 - Matrizes:
-- ✅ Problema 1: 
-- ✅ Problema 2: 
-- ✅ Problema 3: 
-- ✅ Problema 4: 
+- ✅ Problema 1: Campo Agrícola
+- ✅ Problema 2: Sugestão de amigos
+- ✅ Problema 3: Campeonato de empates
+- ✅ Problema 4: Uma pechincha!
 
 ### Semana 10 - Ponteiros e Alocação:
-- ✅ Problema 1: 
-- ✅ Problema 2: 
-- ✅ Problema 3: 
+- ✅ Problema 1: Soma de Vetores
+- ✅ Problema 2: Ocorrências no vetor
+- ✅ Problema 3: Sopa de letrinhas
 
 
 ## 🎯 Principais Aprendizados
