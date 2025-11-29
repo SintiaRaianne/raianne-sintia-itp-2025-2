@@ -10,7 +10,7 @@
 
 **Duração:** 7 minutos e 11 segundos
 
-## Conteúdos Demonstrados:
+## 📚 Conteúdos Demonstrados:
 - [ ] Funcionalidades envolvendo strings
 - [ ] Aplicação de estruturas de repetição
 - [ ] Modularização do código por meio de funções

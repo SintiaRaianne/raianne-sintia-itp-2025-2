@@ -10,7 +10,7 @@
 
 **Duração:** X minutos e Y segundos
 
-## Conteúdos Demonstrados:
+## 📚 Conteúdos Demonstrados:
 - [ ] Funcionalidades envolvendo strings
 - [ ] Uso de estruturas de repetição aninhadas
 - [ ] Operações com matrizes
