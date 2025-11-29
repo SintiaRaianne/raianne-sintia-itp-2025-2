@@ -3,33 +3,35 @@
 
 int main() {
     char campo[21];
-    int indice;
+    int id;
 
     scanf("%20s", campo);
-    scanf("%d", &indice);
+    scanf("%d", &id);
 
     // Verifica se a posicao indicada possui uma bomba    
-    if (campo[indice] == 'x'){
+    if (campo[id] == 'x'){
         printf("BUM!\n");
     }
     else
     {
         int bombas = 0;
 
+        int tamanho = strlen(campo);
+
         // Verifica se ha bombas nas posicoes esquerda
-        if (indice - 1 >= 0 && campo[indice - 1] == 'x'){
+        if (id - 1 >= 0 && campo[id - 1] == 'x'){
 
             bombas++;
         }
 
         // Verifica se ha bombas nas posicoes direita
-        if (indice + 1 < strlen(campo) && campo[indice + 1] == 'x'){
+        if (id + 1 < tamanho && campo[id + 1] == 'x'){
 
             bombas++;
         }
 
-        printf("%d\n", bombas); // Imprime o numero de bombas nas posicoes 
-    }
+        printf("%d\n", bombas); // Exibe a quantidade de bombas encontradas ao redor
 
     return 0;
+    }   
 }
