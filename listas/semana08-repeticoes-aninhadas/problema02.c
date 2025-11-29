@@ -23,12 +23,12 @@ int main() {
             }
         }
         
-        // Troca os valores de chuva
+        // Altera os valores de chuva para o maior
         int temp_chuva = chuva[i];
         chuva[i] = chuva[maior];
         chuva[maior] = temp_chuva;
         
-        // Troca os nomes dos meses correspondentes
+        // Aletra os nomes dos meses correspondentes para o maior
         char *temp_mes = meses[i];
         meses[i] = meses[maior];
         meses[maior] = temp_mes;
